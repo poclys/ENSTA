@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.ensta.myfilmlist.dto.FilmDTO;
 import com.ensta.myfilmlist.model.Film;
+import com.ensta.myfilmlist.pojo.FilmPojo;
 
 public class FilmMapper {
 
@@ -19,4 +20,17 @@ public class FilmMapper {
         }
         return listFilmDTO;
     }
+
+    public static Film filmPojoToFilm(FilmPojo film){
+        return new Film(film.getId(),film.getTitre(), film.getDuration());
+    }
+
+    public static List<Film> listFilmPojoToListFilm(List<FilmPojo> listFilm){
+        List<Film> listFilmDTO = new ArrayList<>();
+        for (FilmPojo film : listFilm ){
+            listFilmDTO.add(filmPojoToFilm(film));
+        }
+        return listFilmDTO;
+    }
+
 }

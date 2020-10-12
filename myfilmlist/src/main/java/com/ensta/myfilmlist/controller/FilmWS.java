@@ -3,7 +3,8 @@ package com.ensta.myfilmlist.controller;
 import java.util.List;
 
 import com.ensta.myfilmlist.dto.FilmDTO;
-import com.ensta.myfilmlist.exception.DaoException;
+import com.ensta.myfilmlist.exception.ControllerException;
+import com.ensta.myfilmlist.exception.ServiceException;
 import com.ensta.myfilmlist.service.FilmService;
 
 import org.springframework.http.HttpStatus;
@@ -26,9 +27,12 @@ public class FilmWS {
 
     @GetMapping
     @ApiOperation(value = "Récupère la liste des films")
-    public ResponseEntity<List<FilmDTO>> retrieveFilm() throws DaoException {
-        return ResponseEntity.status(HttpStatus.OK)
-                .body(filmService.findAll());
+    public ResponseEntity<List<FilmDTO>> retrieveFilm() throws ControllerException {
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(filmService.findAll());
+        } catch (ServiceException e) {
+            throw new ControllerException(e.getMessage());
+        }
     }
 
 }

@@ -1,18 +1,17 @@
 package com.ensta.myfilmlist.exception;
 
-
-public class DaoException extends Exception {
+public class ControllerException extends Exception {
 	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public DaoException() {
+	public ControllerException() {
 		super();
 	}
 	
-	public DaoException(String msg) {
+	public ControllerException(String msg) {
 		super(msg);
 	}
 
