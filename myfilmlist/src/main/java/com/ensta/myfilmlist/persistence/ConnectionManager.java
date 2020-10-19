@@ -6,8 +6,7 @@ import java.sql.SQLException;
 import org.h2.jdbcx.JdbcDataSource;
 
 public class ConnectionManager {
-	private static final String DB_CONNECTION = "jdbc:h2:mem:testdb";
-	private static final String DB_TEST = "jdbc:h2:~/MyFilmListDatabaseTest";
+	private static final String DB_CONNECTION = "jdbc:h2:mem:film";
 	
 	
 	private static final String DB_USER = "sa";
@@ -25,7 +24,6 @@ public class ConnectionManager {
 		}
 		if (datasourcetest == null) {
 			datasourcetest = new JdbcDataSource();
-			datasourcetest.setURL(DB_TEST);
 			datasourcetest.setUser(DB_USER);
 			datasourcetest.setPassword(DB_PASSWORD);
 		}
